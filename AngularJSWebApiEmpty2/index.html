@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/angular.js" type='text/javascript'></script>
+    <script src="Scripts/angular-animate.js" type='text/javascript'></script>
+    <script src="Scripts/angular-route.js" type='text/javascript'></script>
+    <script src="App/playlistController.js" type="text/javascript"></script>
+    <script src="App/app.js" type='text/javascript'> </script>
+</head>
+<body ng-app="app">
+
+    <div id="header"> Deezer Playlist Creator</div>
+    <div id="content" ng-controller="playlistCtrl">
+        <select ng-model="selectedSource">
+            <option ng-repeat="option in ctrl.availableSources" value="{{option.id}}">{{option.name}}</option>
+        </select>
+    </div>
+    <div id="footer"> Jakub Serafin 2015</div>
+</body>
+
+</html>
