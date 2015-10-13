@@ -11,10 +11,11 @@
 <body ng-app="app">
 
     <div id="header"> Deezer Playlist Creator</div>
-    <div id="content" ng-controller="playlistCtrl">
-        <select ng-model="selectedSource">
-            <option ng-repeat="option in ctrl.availableSources" value="{{option.id}}">{{option.name}}</option>
+    <div id="content" ng-controller="playlistController as ctrl">
+        <select ng-model="ctrl.selectedSource" ng-change="ctrl.ItemSelected()">
+            <option ng-repeat="option in ctrl.availableSources" value="{{option.Id}}">{{option.Name}}</option>
         </select>
+        <div id="page-source">{{ctrl.pageSource}}</div>
     </div>
     <div id="footer"> Jakub Serafin 2015</div>
 </body>

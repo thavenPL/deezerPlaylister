@@ -13,6 +13,6 @@
         
     ]);
 
-    app.controller('playlistCtrl', playlistController);
+    app.controller('playlistController', PlaylistController);
 
 })();

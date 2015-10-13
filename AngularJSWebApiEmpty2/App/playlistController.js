@@ -1,18 +1,24 @@
 /// <reference path="../Scripts/typings/angularjs/angular.d.ts"/>
-var playlistController = (function () {
-    function playlistController($scope) {
-        this.availableSources = [new playlistSource('LP3 Top', 1), new playlistSource('LP3 all', 2)];
-        $scope.ctrl = this;
-        //$scope.availableSources = this.availableSources;
-        //$scope.selectedSource = this.selectedSource; 
+var PlaylistController = (function () {
+    function PlaylistController($http) {
+        var _this = this;
+        this.availableSources = [new PlaylistSource('LP3 Top', 1), new PlaylistSource('LP3 all', 2)];
+        this.http = $http;
+        this.http.get("/api/PlaylistCollection").success(function (data) { return _this.availableSources = data; });
     }
-    return playlistController;
+    PlaylistController.prototype.ItemSelected = function () {
+        var _this = this;
+        this.http.get("/api/PlaylistCollection", {
+            params: { Id: this.selectedSource }
+        }).success(function (data) { _this.pageSource = data; });
+    };
+    return PlaylistController;
 })();
-var playlistSource = (function () {
-    function playlistSource(name, id) {
-        this.name = name;
-        this.id = id;
+var PlaylistSource = (function () {
+    function PlaylistSource(name, id) {
+        this.Name = name;
+        this.Id = id;
     }
-    return playlistSource;
+    return PlaylistSource;
 })();
 //# sourceMappingURL=playlistController.js.map
