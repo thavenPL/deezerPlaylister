@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="Scripts/angular.js" type='text/javascript'></script>
     <script src="Scripts/angular-animate.js" type='text/javascript'></script>
     <script src="Scripts/angular-route.js" type='text/javascript'></script>
@@ -12,10 +13,14 @@
 
     <div id="header"> Deezer Playlist Creator</div>
     <div id="content" ng-controller="playlistController as ctrl">
-        <select ng-model="ctrl.selectedSource" ng-change="ctrl.ItemSelected()">
-            <option ng-repeat="option in ctrl.availableSources" value="{{option.Id}}">{{option.Name}}</option>
+        <select ng-model="ctrl.SelectedSource" ng-change="ctrl.ItemSelected()">
+            <option ng-repeat="option in ctrl.AvailableSources" value="{{option.Id}}">{{option.Name}}</option>
         </select>
-        <div id="page-source">{{ctrl.pageSource}}</div>
+        <div><label ng-repeat="element in ctrl.PlaylistElements">
+                 <input type="checkbox"
+                        name="selectedSongs[]"
+                        value="{{element}}"> {{element}}
+</label></div>
     </div>
     <div id="footer"> Jakub Serafin 2015</div>
 </body>
