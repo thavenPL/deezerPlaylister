@@ -21,7 +21,7 @@ class PlaylistController {
             this.PlaylistElements = $(html).find('#divCenter .boxNotowanie .BoxTrack').map((item, element) => {
                 var auth = $(element).find('.bArtist a').text();
                 var tit = $(element).find('.bTitle a').text();
-                var obj = { author: auth, title: tit };
+                var obj = new PlaylistElement(auth,tit);
                 return obj;
             }).toArray();
         });
@@ -31,8 +31,14 @@ class PlaylistController {
 }
 
 class PlaylistElement {
+    constructor(title: string, artist: string) {
+        this.Title = title;
+        this.Artist = artist;
+    }
+
     Title: string;
     Artist: string;
+    Selected: boolean = false;
 }
 
 class PlaylistSource {

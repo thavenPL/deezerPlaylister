@@ -15,7 +15,7 @@ var PlaylistController = (function () {
             _this.PlaylistElements = $(html).find('#divCenter .boxNotowanie .BoxTrack').map(function (item, element) {
                 var auth = $(element).find('.bArtist a').text();
                 var tit = $(element).find('.bTitle a').text();
-                var obj = { author: auth, title: tit };
+                var obj = new PlaylistElement(auth, tit);
                 return obj;
             }).toArray();
         });
@@ -23,7 +23,10 @@ var PlaylistController = (function () {
     return PlaylistController;
 })();
 var PlaylistElement = (function () {
-    function PlaylistElement() {
+    function PlaylistElement(title, artist) {
+        this.Selected = false;
+        this.Title = title;
+        this.Artist = artist;
     }
     return PlaylistElement;
 })();

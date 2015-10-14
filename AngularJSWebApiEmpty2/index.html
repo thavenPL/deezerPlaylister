@@ -16,11 +16,18 @@
         <select ng-model="ctrl.SelectedSource" ng-change="ctrl.ItemSelected()">
             <option ng-repeat="option in ctrl.AvailableSources" value="{{option.Id}}">{{option.Name}}</option>
         </select>
-        <div><label ng-repeat="element in ctrl.PlaylistElements">
-                 <input type="checkbox"
-                        name="selectedSongs[]"
-                        value="{{element}}"> {{element}}
-</label></div>
+        <div>
+            <ul>
+                <li ng-repeat="element in ctrl.PlaylistElements">
+                    <label>
+                        <input ng-model="element.Selected"
+                               name="selectedSongs[]"
+                               type="checkbox"
+                               value="{{element}}"> {{element.Artist}} - {{element.Title}}
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
     <div id="footer"> Jakub Serafin 2015</div>
 </body>
