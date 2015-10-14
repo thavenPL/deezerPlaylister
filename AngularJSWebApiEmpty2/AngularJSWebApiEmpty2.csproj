@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="channel.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DeezerController.cs" />
     <Compile Include="Controllers\PlaylistCollectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
