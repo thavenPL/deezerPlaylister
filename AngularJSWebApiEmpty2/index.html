@@ -15,6 +15,7 @@
     <div id="header"> Deezer Playlist Creator</div>
     <div id="dz-root"></div>
     <div id="content" ng-controller="playlistController as ctrl">
+        <a href="#" id="deezer-link">login to deezer</a>
        <select ng-model="ctrl.SelectedSource" ng-change="ctrl.ItemSelected()">
             <option ng-repeat="option in ctrl.AvailableSources" value="{{option.Id}}">{{option.Name}}</option>
         </select>
@@ -25,7 +26,18 @@
                         <input ng-model="element.Selected"
                                name="selectedSongs[]"
                                type="checkbox"
-                               value="{{element}}"> {{element.Artist}} - {{element.Title}}
+                               value="{{element}}"> {{element.Artist}} - {{element.Title}} 
+                        <span ng-if="element.IsLoading">
+                            <img src="Images/ajax-loader.gif" />
+                        </span>
+                        <span ng-if="!element.IsLoading">
+                            <span ng-if="element.WasFound">
+                                Deezer: {{element.DeezerArtist}} - {{element.DeezerTitle}}
+                            </span>
+                            <span ng-if="!element.WasFound">
+                                [song not found]
+                            </span>
+                        </span>
                     </label>
                 </li>
             </ul>
@@ -41,6 +53,12 @@
             DZ.ready(function (sdk_options) {
                 console.log('DZ SDK is ready', sdk_options);
             });
+        });
+
+        $("#deezer-link").click(login)
+
+        function login()
+        {
             DZ.login(function (response) {
                 if (response.authResponse) {
                     console.log('Welcome!  Fetching your information.... ');
@@ -51,7 +69,7 @@
                     console.log('User cancelled login or did not fully authorize.');
                 }
             }, { perms: 'basic_access,email' });
-        });
+        }
     </script>
 </body>
 </html>

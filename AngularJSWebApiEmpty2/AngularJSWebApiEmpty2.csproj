@@ -80,6 +80,7 @@
     <Content Include="App\app.js" />
     <Content Include="channel.html" />
     <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
