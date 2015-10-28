@@ -33,14 +33,12 @@ class PlaylistController {
                 value.IsLoading = true;
                 DZ.api('/search/track?q=' + encodeURI(value.Title) + '&strict=on', function (response) {
                     if (response != null && response.data != null && response.data.length > 0) {
-                        var firstResponse = response.data[0];
+                        response.data.forEach(item => value.DeezerItems.push(new DeezerItem(item.title, item.artist.name)));
                         value.WasFound = true;
-                        value.DeezerTitle = firstResponse.title;
-                        value.DeezerArtist = firstResponse.artist.name;
-                        value.IsLoading = false
+                        value.IsLoading = false;
                     }
                     else {
-                        value.IsLoading = false
+                        value.IsLoading = false;
                     }
                 });
             });
@@ -54,15 +52,30 @@ class PlaylistElement {
     constructor(title: string, artist: string) {
         this.Title = title;
         this.Artist = artist;
+        this.DeezerItems = new Array<DeezerItem>();
     }
 
     Title: string;
     Artist: string;
     Selected: boolean = false;
-    DeezerTitle: string;
-    DeezerArtist: string;
+    DeezerItems: Array<DeezerItem>;
+    SelectedItemId: number;
+//    DeezerTitle: string;
+//    DeezerArtist: string;
     IsLoading: boolean;
     WasFound: boolean;
+}
+
+class DeezerItem {
+    Id: number;
+    Artist: string;
+    Title: string; 
+    ImageUrl: string;
+    
+    constructor(artist: string, title: string) {
+        this.Artist = artist;
+        this.Title = title;
+    } 
 }
 
 class PlaylistSource {

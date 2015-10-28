@@ -79,6 +79,8 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="channel.html" />
+    <Content Include="Content\select.css" />
+    <Content Include="Content\select.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="index.html" />
@@ -92,6 +94,8 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\select.js" />
+    <Content Include="Scripts\select.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

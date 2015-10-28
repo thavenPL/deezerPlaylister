@@ -5,7 +5,8 @@
     app = angular.module('app', [
         // Angular modules
         'ngAnimate',
-        'ngRoute'
+        'ngRoute',
+        'ui.select'
 
         // Custom modules
 

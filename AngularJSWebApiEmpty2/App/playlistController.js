@@ -23,10 +23,8 @@ var PlaylistController = (function () {
                 value.IsLoading = true;
                 DZ.api('/search/track?q=' + encodeURI(value.Title) + '&strict=on', function (response) {
                     if (response != null && response.data != null && response.data.length > 0) {
-                        var firstResponse = response.data[0];
+                        response.data.forEach(function (item) { return value.DeezerItems.push(new DeezerItem(item.title, item.artist.name)); });
                         value.WasFound = true;
-                        value.DeezerTitle = firstResponse.title;
-                        value.DeezerArtist = firstResponse.artist.name;
                         value.IsLoading = false;
                     }
                     else {
@@ -43,8 +41,16 @@ var PlaylistElement = (function () {
         this.Selected = false;
         this.Title = title;
         this.Artist = artist;
+        this.DeezerItems = new Array();
     }
     return PlaylistElement;
+})();
+var DeezerItem = (function () {
+    function DeezerItem(artist, title) {
+        this.Artist = artist;
+        this.Title = title;
+    }
+    return DeezerItem;
 })();
 var PlaylistSource = (function () {
     function PlaylistSource(name, id) {
@@ -53,3 +59,4 @@ var PlaylistSource = (function () {
     }
     return PlaylistSource;
 })();
+//# sourceMappingURL=playlistController.js.map
